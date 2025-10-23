@@ -58,3 +58,22 @@ coverage/
 # Archivos de deployment
 deploy.sh
 deploy.bat
+
+# Archivos sensibles adicionales
+*.pdf
+*.key
+*.pem
+*.p12
+*.pfx
+config/database.php
+config/mail.php
+
+# Archivos de respaldo de base de datos
+*.sql
+*.dump
+*.backup
+
+# Archivos de configuración específicos del servidor
+.htaccess.local
+nginx.conf.local
+apache.conf.local

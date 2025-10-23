@@ -1,225 +1,153 @@
-# 🚢 Humber Internacional - Landing Page
+# Humber International - Página de Destino Oficial
 
-## 📋 Descripción
-Landing page profesional para **Humber Internacional**, empresa líder en logística y transporte de cargas en Argentina, Chile y Brasil.
+![Humber International](https://www.humber.com.ar/images/logo-humber.png)
 
-## 🎯 Características Principales
-- ✅ **Multiidioma:** Español y Portugués
-- ✅ **Multirregión:** Argentina, Chile y Brasil
-- ✅ **Responsive:** Optimizado para móviles y desktop
-- ✅ **WhatsApp integrado:** Botón flotante por país
-- ✅ **Formulario funcional:** Captura de leads
-- ✅ **SEO optimizado:** Meta tags y estructura semántica
+## Sobre Humber
 
----
+Humber es una empresa de logística líder impulsada por la tecnología, con más de una década de experiencia conectando negocios en toda América Latina. Nos especializamos en proporcionar soluciones de transporte innovadoras y confiables, actuando como un "Uber de la carga" para una nueva generación de comercio.
 
-## 📦 Dos Versiones Disponibles
+Este repositorio contiene el código fuente oficial de la página de destino de Humber International, diseñada para una integración perfecta y un alto rendimiento.
 
-### 🌐 **Versión Estática** (`humber-landing-static/`)
-**Ideal para hosting simple y máxima velocidad**
-- Sin dependencias de servidor
-- Números hardcodeados
-- Despliegue instantáneo
-- Compatible con GitHub Pages, Netlify, Vercel
+## Tabla de Contenido
 
-### ⚙️ **Versión PHP** (`humber-landing-php/`)
-**Ideal para máxima flexibilidad**
-- Backend PHP con rutas
-- Configuración centralizada
-- Plantillas Blade
-- Fácil mantenimiento
+- [Descripción del Proyecto](#descripción-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Implementaciones Disponibles](#implementaciones-disponibles)
+- [Cómo Empezar](#cómo-empezar)
+- [Configuración](#configuración)
+- [Características Clave](#características-clave)
+- [Soporte y Contribución](#soporte-y-contribución)
+- [Licencia](#licencia)
 
----
+## Descripción del Proyecto
 
-## 🚀 Inicio Rápido
+Este repositorio proporciona dos implementaciones optimizadas de la página de destino de Humber International:
 
-### Opción 1: Versión Estática (Recomendada)
-```bash
-cd humber-landing-static/
-# Subir archivos a tu hosting favorito
-# ¡Listo!
-```
+1.  **Versión HTML Estática:** Para un rendimiento y simplicidad máximos.
+2.  **Versión PHP:** Para capacidades dinámicas y fácil integración con proyectos basados en PHP.
 
-### Opción 2: Versión PHP
-```bash
-cd humber-landing-php/
-cp .env.example .env
-php -S localhost:8000
-```
+Ambas versiones son completamente responsivas, están optimizadas para SEO y localizadas para los mercados de habla hispana y portuguesa.
 
----
+## Tecnologías Utilizadas
 
-## 📞 Números Configurados
+- **Frontend:**
+    - HTML5 (Semántico)
+    - CSS3 con Tailwind CSS
+    - JavaScript (ES6+)
+- **Backend (Versión PHP):**
+    - PHP 8.0+
+    - Motor de Plantillas Blade
+- **Herramientas:**
+    - Composer (para dependencias de PHP)
 
-| País | Teléfono | WhatsApp |
-|------|----------|----------|
-| 🇦🇷 Argentina | +54 9 11 2345-6789 | wa.me/5491123456789 |
-| 🇨🇱 Chile | +56 9 8765-4321 | wa.me/56987654321 |
-| 🇧🇷 Brasil | +55 11 9876-5432 | wa.me/5511987654321 |
+## Implementaciones Disponibles
 
----
+### 1. HTML Estático (`humber-landing-static/`)
 
-## 🌍 URLs Disponibles
+Ideal para entornos donde la velocidad y la simplicidad son primordiales.
+
+- **Ventajas:**
+    - Tiempos de carga ultrarrápidos.
+    - Sin dependencias del lado del servidor.
+    - Perfecto para arquitecturas JAMstack, CDNs y plataformas de alojamiento estático (Netlify, Vercel, GitHub Pages).
+- **Desventajas:**
+    - La configuración (ej., números de teléfono) está codificada y requiere actualizaciones manuales.
+
+### 2. PHP (`humber-landing-php/`)
+
+Una implementación flexible y potente para entornos de servidor dinámicos.
+
+- **Ventajas:**
+    - Configuración centralizada a través de archivos `.env`.
+    - Fácil de mantener y actualizar.
+    - Integración perfecta con aplicaciones PHP existentes y frameworks como Laravel.
+- **Desventajas:**
+    - Requiere un servidor con PHP habilitado.
+
+## Cómo Empezar
+
+### Requisitos Previos
+
+- Git
+- PHP 8.0+ (para la versión PHP)
+- Composer (para la versión PHP)
+
+### Instalación
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/your-username/humber-landing.git
+    cd humber-landing
+    ```
+
+2.  **Elija su implementación:**
+
+    - **Para la versión Estática:**
+      No se requiere instalación adicional. Puede servir los archivos desde el directorio `humber-landing-static/`.
+
+    - **Para la versión PHP:**
+      ```bash
+      cd humber-landing-php/
+      cp .env.example .env
+      ```
+      Revise y edite el archivo `.env` para que coincida con su entorno.
+
+### Ejecución Local
+
+- **Versión Estática:**
+  Puede usar cualquier servidor HTTP simple. Por ejemplo, con Python:
+  ```bash
+  cd humber-landing-static/
+  python -m http.server 8002
+  ```
+  - Español: `http://localhost:8002/`
+  - Portugués: `http://localhost:8002/index-pt.html`
+
+- **Versión PHP:**
+  Use el servidor incorporado de PHP:
+  ```bash
+  cd humber-landing-php/
+  php -S localhost:8001
+  ```
+  - Español: `http://localhost:8001/`
+  - Portugués: `http://localhost:8001/br`
+
+## Configuración
+
+### Versión PHP (`.env`)
+
+La versión PHP se configura a través del archivo `.env`. Las variables clave incluyen:
+
+- `APP_URL`: La URL base de su aplicación.
+- `LEAD_REST_URL`: El endpoint para el envío de leads.
+- `WHATSAPP_AR`, `WHATSAPP_CL`, `WHATSAPP_BR`: Números de WhatsApp para cada región.
+- `GTM_ID`: Su ID de Google Tag Manager.
 
 ### Versión Estática
-- **Español:** `index.html`
-- **Portugués:** `index-pt.html`
 
-### Versión PHP
-- **Español:** `/es`
-- **Portugués:** `/pt`
+Toda la configuración se maneja directamente dentro de los archivos HTML (`index.html` y `index-pt.html`). Necesitará editar manualmente estos archivos para cambiar números de teléfono, URLs y otras configuraciones.
 
----
+## Características Clave
 
-## 📁 Estructura del Repositorio
+- **Soporte Multilenguaje:** Localizaciones en español y portugués.
+- **Preparado para Múltiples Regiones:** Configurado para Argentina, Chile y Brasil.
+- **Diseño Responsivo:** Optimizado para dispositivos de escritorio, tabletas y móviles.
+- **Formulario de Contacto Funcional:** Captura de leads con procesamiento en el backend (versión PHP).
+- **WhatsApp Integrado:** Botón flotante con números específicos por país.
+- **Optimizado para SEO:** HTML semántico, metaetiquetas y mejores prácticas.
 
-```
-humber-landing-delivery/
-├── README.md                    # Este archivo
-├── DEPLOYMENT-GUIDE.md          # Guía completa de despliegue
-├── humber-landing-static/       # Versión estática
-│   ├── index.html              # Página principal (ES)
-│   ├── index-pt.html           # Página principal (PT)
-│   ├── assets/                 # Imágenes, iconos, logos
-│   ├── js/                     # JavaScript
-│   └── README.md               # Documentación específica
-└── humber-landing-php/         # Versión PHP
-    ├── index.php               # Punto de entrada
-    ├── web.php                 # Rutas
-    ├── config/                 # Configuraciones
-    ├── resources/views/        # Plantillas Blade
-    ├── assets/                 # Assets
-    └── README.md               # Documentación específica
-```
+## Soporte y Contribución
 
----
+Este proyecto es mantenido por el equipo de desarrollo de Humber.
 
-## 🎨 Servicios Destacados
+- **Informes de Errores:** Por favor, abra una *incidencia* en GitHub con una descripción detallada del problema.
+- **Solicitudes de Características:** Para nuevas características o mejoras, por favor, abra una *incidencia* para iniciar una discusión.
+- **Contribuciones:** Agradecemos las contribuciones. Por favor, envíe una *pull request* con una descripción clara de sus cambios.
 
-- **Cargas Secas y Líquidas**
-- **Cargas Refrigeradas**
-- **Cargas Peligrosas**
-- **Cargas de Proyecto**
-- **Cargas Contenedores**
-- **Cargas Consolidadas**
 
----
 
-## 🌐 Cobertura Geográfica
+## Licencia
 
-### Argentina 🇦🇷
-- Buenos Aires y área metropolitana
-- Principales puertos y centros logísticos
+Este proyecto está licenciado bajo la Licencia MIT. Vea el archivo [LICENSE](LICENSE) para más detalles.
 
-### Chile 🇨🇱
-- Santiago y regiones principales
-- Puertos de Valparaíso y San Antonio
-
-### Brasil 🇧🇷
-- São Paulo y región sudeste
-- Principales centros industriales
-
----
-
-## 🔧 Personalización
-
-### Cambiar Números de Teléfono
-
-#### Versión Estática:
-Editar directamente en archivos HTML:
-- `index.html` (español)
-- `index-pt.html` (portugués)
-
-#### Versión PHP:
-Editar `config/leads.php`:
-```php
-'whatsapp' => [
-    'ar' => 'NUEVO-NUMERO-AR',
-    'cl' => 'NUEVO-NUMERO-CL',
-    'br' => 'NUEVO-NUMERO-BR',
-]
-```
-
-### Cambiar Contenido
-- **Estática:** Editar archivos HTML
-- **PHP:** Editar plantillas en `resources/views/landing/`
-
----
-
-## 📱 Funcionalidades
-
-### Formulario de Contacto
-- Captura nombre, email, teléfono y mensaje
-- Validación en frontend
-- Procesamiento en backend (versión PHP)
-
-### WhatsApp Flotante
-- Botón fijo en esquina inferior derecha
-- Opciones por país (Argentina, Chile, Brasil)
-- Enlaces directos a WhatsApp
-
-### Footer Informativo
-- Enlaces telefónicos clickeables
-- Información de contacto por país
-- Navegación entre idiomas
-
----
-
-## 🚀 Opciones de Hosting
-
-### Gratuitas
-- **GitHub Pages** (estática)
-- **Netlify** (estática)
-- **Vercel** (estática)
-
-### De Pago
-- **Hosting compartido** (PHP)
-- **VPS/Cloud** (PHP)
-- **CDN** (estática)
-
----
-
-## 📊 Métricas y Analytics
-
-### Google Analytics
-- Configurado para seguimiento de conversiones
-- Eventos de formulario y WhatsApp
-- Segmentación por país e idioma
-
-### Conversiones Importantes
-- Envío de formulario de contacto
-- Clicks en botones de WhatsApp
-- Llamadas telefónicas desde footer
-
----
-
-## 🆘 Soporte
-
-### Documentación Completa
-Ver `DEPLOYMENT-GUIDE.md` para:
-- Guía paso a paso de despliegue
-- Configuración de hosting
-- Solución de problemas comunes
-- Optimización y mantenimiento
-
-### Contacto Técnico
-Para soporte técnico o modificaciones, contactar al desarrollador con:
-- Versión utilizada (estática/PHP)
-- Tipo de hosting
-- Descripción del problema
-- URL del sitio (si aplica)
-
----
-
-## 📄 Licencia
-Proyecto desarrollado para **Humber Internacional**. Todos los derechos reservados.
-
----
-
-## 🎉 ¡Listo para Desplegar!
-
-Elige la versión que mejor se adapte a tus necesidades:
-- **¿Simplicidad máxima?** → Versión Estática
-- **¿Flexibilidad máxima?** → Versión PHP
-
-**¡Tu landing page está lista para conquistar Argentina, Chile y Brasil!** 🌟
+Copyright (c) 2025 Humber International.

@@ -1,196 +1,113 @@
-# 🚀 Guía de Despliegue - Humber Landing
+# Guía Profesional de Despliegue
 
-## 📦 Dos Versiones Disponibles
+## Introducción
 
-Este proyecto incluye **dos versiones** listas para despliegue:
+Esta guía detalla las mejores prácticas y procedimientos para desplegar la landing page de Humber International. Cubre dos enfoques de implementación: una versión PHP dinámica y una versión HTML estática, permitiéndole elegir la que mejor se adapte a su infraestructura y necesidades.
 
-### 🌐 Versión Estática (`humber-landing-static/`)
-- **Ideal para:** Hosting simple, GitHub Pages, Netlify, Vercel
-- **Ventajas:** Más rápida, sin dependencias de servidor
-- **Desventajas:** Números hardcodeados, menos flexible
+## Tabla de Contenido
 
-### ⚙️ Versión PHP (`humber-landing-php/`)
-- **Ideal para:** Servidores con PHP, hosting tradicional
-- **Ventajas:** Configuración centralizada, más flexible
-- **Desventajas:** Requiere servidor PHP
+- [Requisitos Previos](#requisitos-previos)
+- [Opción 1: Despliegue de la Versión PHP (Recomendado)](#opción-1-despliegue-de-la-versión-php-recomendado)
+- [Opción 2: Despliegue de la Versión Estática](#opción-2-despliegue-de-la-versión-estática)
+- [Configuración del Servidor Web](#configuración-del-servidor-web)
+- [Verificación Post-Despliegue](#verificación-post-despliegue)
+- [Solución de Problemas Comunes](#solución-de-problemas-comunes)
+- [Soporte](#soporte)
 
----
+## Requisitos Previos
 
-## 🎯 ¿Cuál Elegir?
+Antes de comenzar, asegúrese de que su entorno cumpla con los siguientes requisitos:
 
-### Elige **Versión Estática** si:
-- ✅ Quieres máxima simplicidad
-- ✅ Usas hosting gratuito (GitHub Pages, Netlify)
-- ✅ No planeas cambiar números frecuentemente
-- ✅ Quieres máxima velocidad de carga
+- **Para la versión PHP:**
+  - PHP 7.4 o superior (se recomienda 8.0+)
+  - Servidor web (Apache, Nginx)
+  - Acceso para configurar variables de entorno y reglas de reescritura.
+- **Para la versión estática:**
+  - Cualquier servidor web o plataforma de hosting de sitios estáticos (Netlify, Vercel, GitHub Pages).
 
-### Elige **Versión PHP** si:
-- ✅ Tienes hosting con PHP
-- ✅ Quieres cambiar números fácilmente
-- ✅ Planeas añadir más funcionalidades
-- ✅ Necesitas procesamiento de formularios avanzado
+## Opción 1: Despliegue de la Versión PHP (Recomendado)
 
----
+Este enfoque ofrece la máxima flexibilidad y es ideal para entornos de servidor tradicionales.
 
-## 🌐 Opciones de Hosting
+### Pasos de Despliegue
 
-### Para Versión Estática
+1.  **Transferir Archivos:** Copie el contenido del directorio `humber-landing-php/` al directorio raíz de su servidor (ej. `/var/www/html`).
+2.  **Configurar Variables de Entorno:**
+    -   Renombre el archivo `.env.example` a `.env`.
+    -   Edite el archivo `.env` para configurar los parámetros de la aplicación, como las credenciales de la API de leads y los números de contacto regionales.
+3.  **Configurar el Servidor Web:**
+    -   Asegúrese de que su servidor web redirija todas las solicitudes al archivo `index.php`. Consulte la sección [Configuración del Servidor Web](#configuración-del-servidor-web) para ver ejemplos.
+4.  **Establecer Permisos:**
+    -   Asegúrese de que los directorios tengan permisos `755` y los archivos `644` para garantizar la seguridad y el correcto funcionamiento.
 
-#### **GitHub Pages** (Gratuito)
-1. Crea repositorio en GitHub
-2. Sube archivos de `humber-landing-static/`
-3. Activa GitHub Pages en Settings
-4. ¡Listo! URL: `usuario.github.io/repo`
+## Opción 2: Despliegue de la Versión Estática
 
-#### **Netlify** (Gratuito)
-1. Arrastra carpeta `humber-landing-static/` a netlify.com
-2. Configura dominio personalizado (opcional)
-3. ¡Desplegado automáticamente!
+Esta opción es ideal para simplicidad y velocidad, utilizando plataformas de hosting modernas.
 
-#### **Vercel** (Gratuito)
-1. Conecta repositorio o sube archivos
-2. Vercel detecta automáticamente HTML estático
-3. Despliegue instantáneo
+### Pasos de Despliegue
 
-### Para Versión PHP
+1.  **Subir Archivos:** Despliegue el contenido del directorio `humber-landing-static/` en su plataforma de hosting preferida (Netlify, Vercel, etc.).
+2.  **Configuración Manual:**
+    -   A diferencia de la versión PHP, deberá editar manualmente los archivos `index.html` y `index-pt.html` para actualizar los números de teléfono, el ID de Google Tag Manager y cualquier otro contenido.
+3.  **Configurar Redirecciones (si es necesario):**
+    -   Configure reglas en su proveedor de hosting para que la ruta `/br` sirva el archivo `index-pt.html`.
 
-#### **Hosting Compartido**
-1. Sube archivos de `humber-landing-php/` vía FTP
-2. Configura `.env` con datos reales
-3. Apunta dominio a `index.php`
+## Configuración del Servidor Web
 
-#### **VPS/Cloud**
+### Apache (`.htaccess`)
+
+Para habilitar URLs amigables, cree un archivo `.htaccess` en el directorio raíz con el siguiente contenido:
+
+```apache
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+```
+
+### Nginx
+
+Agregue el siguiente bloque `location` a la configuración de su servidor Nginx:
+
+```nginx
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+
+location ~ \.php$ {
+    fastcgi_pass unix:/var/run/php/php8.2-fpm.sock; # Ajuste a su socket PHP-FPM
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+}
+```
+
+## Verificación Post-Despliegue
+
+### Lista de Verificación
+
+- [ ] El dominio o subdominio apunta correctamente a la IP del servidor.
+- [ ] Se ha configurado un certificado SSL (HTTPS).
+- [ ] Las URLs (`/` y `/br`) cargan las versiones correctas del sitio.
+- [ ] Los activos (CSS, JS, imágenes) se cargan sin errores 404.
+- [ ] Los enlaces de contacto (WhatsApp) funcionan y son correctos.
+- [ ] No hay errores en la consola del navegador.
+
+### Pruebas Locales
+
+Para una verificación rápida antes del despliegue, puede usar el servidor incorporado de PHP:
+
 ```bash
-# Instalar dependencias
-sudo apt update
-sudo apt install php nginx
-
-# Configurar Nginx
-sudo nano /etc/nginx/sites-available/humber
-
-# Subir archivos
-scp -r humber-landing-php/ user@server:/var/www/
+# Desde el directorio humber-landing-php
+php -S localhost:8001
 ```
 
----
+## Solución de Problemas Comunes
 
-## ⚡ Despliegue Rápido
+-   **Error 500 (Internal Server Error):** Generalmente causado por una sintaxis incorrecta en `.htaccess` o permisos de archivo incorrectos. Revise los logs de error de su servidor.
+-   **Página en Blanco:** A menudo es un error de PHP. Habilite la visualización de errores de PHP en su entorno de desarrollo o revise los logs de PHP.
+-   **Assets no Cargan (Error 404):** Verifique que las rutas a los archivos CSS, JS e imágenes en su HTML sean correctas en relación con la raíz de su dominio.
 
-### Versión Estática (5 minutos)
-```bash
-# 1. Comprimir archivos
-zip -r humber-static.zip humber-landing-static/
+## Soporte
 
-# 2. Subir a tu hosting favorito
-# 3. Extraer y configurar dominio
-# ¡Listo!
-```
-
-### Versión PHP (10 minutos)
-```bash
-# 1. Subir archivos
-scp -r humber-landing-php/ user@server:/var/www/
-
-# 2. Configurar .env
-cp .env.example .env
-nano .env
-
-# 3. Configurar servidor web
-# ¡Funcionando!
-```
-
----
-
-## 🔧 Configuración Post-Despliegue
-
-### Cambiar Números de Teléfono
-
-#### En Versión Estática:
-```bash
-# Buscar y reemplazar en archivos HTML
-sed -i 's/+54 9 11 2345-6789/TU-NUMERO-AR/g' *.html
-sed -i 's/5491123456789/TU-WHATSAPP-AR/g' *.html
-```
-
-#### En Versión PHP:
-```php
-// Editar config/leads.php
-'whatsapp' => [
-    'ar' => 'TU-NUMERO-WHATSAPP-AR',
-    'cl' => 'TU-NUMERO-WHATSAPP-CL', 
-    'br' => 'TU-NUMERO-WHATSAPP-BR',
-]
-```
-
-### Configurar Dominio Personalizado
-1. **DNS:** Apunta A record a IP del servidor
-2. **SSL:** Configura certificado (Let's Encrypt recomendado)
-3. **Redirecciones:** www → no-www (opcional)
-
----
-
-## 📊 Monitoreo y Mantenimiento
-
-### Métricas Importantes
-- **Tiempo de carga:** < 3 segundos
-- **Disponibilidad:** > 99.9%
-- **Conversiones:** Formularios enviados
-- **Tráfico:** Visitas por país/idioma
-
-### Herramientas Recomendadas
-- **Google Analytics:** Seguimiento de visitas
-- **Google Search Console:** SEO y indexación
-- **GTmetrix:** Velocidad de carga
-- **Uptime Robot:** Monitoreo de disponibilidad
-
----
-
-## 🆘 Solución de Problemas
-
-### Problemas Comunes
-
-#### "Página no carga"
-- ✅ Verifica configuración DNS
-- ✅ Revisa permisos de archivos (755)
-- ✅ Comprueba logs del servidor
-
-#### "Números no funcionan"
-- ✅ Verifica formato internacional (+54, +56, +55)
-- ✅ Comprueba enlaces `tel:` y `wa.me`
-- ✅ Revisa configuración en PHP
-
-#### "Formulario no envía"
-- ✅ Configura SMTP en `.env` (versión PHP)
-- ✅ Verifica JavaScript en consola
-- ✅ Comprueba permisos de escritura
-
----
-
-## 📞 Soporte Técnico
-
-### Antes de Contactar
-1. ✅ Revisa esta guía completa
-2. ✅ Comprueba logs de error
-3. ✅ Verifica configuración DNS
-4. ✅ Prueba en navegador incógnito
-
-### Información Necesaria
-- Versión utilizada (estática/PHP)
-- Tipo de hosting
-- Mensaje de error exacto
-- URL del sitio
-- Navegador y dispositivo
-
----
-
-## 🎉 ¡Felicidades!
-
-Tu landing page de Humber está lista para conquistar Argentina, Chile y Brasil. 
-
-**Próximos pasos sugeridos:**
-1. 📈 Configurar Google Analytics
-2. 🔍 Optimizar SEO
-3. 📱 Probar en dispositivos móviles
-4. 🚀 Lanzar campañas de marketing
-
-¡Éxito en tu proyecto! 🌟
+Si encuentra problemas técnicos, por favor, abra una *incidencia* en el repositorio de GitHub del proyecto o contacte al equipo de desarrollo en `dev-team@humber.com.ar`.

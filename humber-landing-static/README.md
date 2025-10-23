@@ -50,15 +50,15 @@ php -S localhost:8000
 
 ### Argentina
 - **Teléfono:** +54 9 11 2345-6789
-- **WhatsApp:** https://wa.me/5491123456789
+- **WhatsApp:** https://wa.me/5491127530009
 
 ### Chile  
 - **Teléfono:** +56 9 8765-4321
-- **WhatsApp:** https://wa.me/56987654321
+- **WhatsApp:** https://wa.me/56950004666
 
 ### Brasil
 - **Teléfono:** +55 11 9876-5432
-- **WhatsApp:** https://wa.me/5511987654321
+- **WhatsApp:** https://wa.me/554398650213
 
 ## 🔧 Personalización
 

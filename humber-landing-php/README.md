@@ -83,15 +83,15 @@ return [
 
 ### Argentina
 - **Teléfono:** +54 9 11 2345-6789
-- **WhatsApp:** https://wa.me/5491123456789
+- **WhatsApp:** https://wa.me/5491127530009
 
 ### Chile  
 - **Teléfono:** +56 9 8765-4321
-- **WhatsApp:** https://wa.me/56987654321
+- **WhatsApp:** https://wa.me/56950004666
 
 ### Brasil
 - **Teléfono:** +55 11 9876-5432
-- **WhatsApp:** https://wa.me/5511987654321
+- **WhatsApp:** https://wa.me/554398650213
 
 ## 🎨 Personalización
 
@@ -116,12 +116,12 @@ return [
 ## 📧 Configuración de Email
 Para el formulario de contacto, configura en `.env`:
 ```env
-MAIL_HOST=smtp.gmail.com
+MAIL_HOST=smtp.ejemplo.com
 MAIL_PORT=587
-MAIL_USERNAME=tu-email@gmail.com
-MAIL_PASSWORD=tu-password
-MAIL_FROM_ADDRESS=noreply@humber.com
-MAIL_FROM_NAME="Humber Internacional"
+MAIL_USERNAME=tu-email@ejemplo.com
+MAIL_PASSWORD=tu-password-seguro
+MAIL_FROM_ADDRESS=noreply@tudominio.com
+MAIL_FROM_NAME="Tu Empresa"
 ```
 
 ## 🔒 Seguridad

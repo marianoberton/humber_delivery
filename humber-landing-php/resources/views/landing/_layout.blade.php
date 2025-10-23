@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
+    <meta name="x-build-origin" content="resources-layout">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -378,10 +383,8 @@
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
-                    // MODO TESTING: Detectar si estamos en modo de prueba
-                    const isTestMode = window.location.hostname === 'localhost' || 
-                                      window.location.hostname === '127.0.0.1' ||
-                                      window.location.search.includes('test=1');
+                    // MODO TESTING: Cambiar a false para producción, true para testing
+                    const isTestMode = false; // Cambiar a false para enviar emails reales
                     
                     const formData = new FormData(form);
                     
@@ -398,10 +401,10 @@
                     });
                     
                     // Mapear campos del formulario
-                    const firstName = form.querySelector('#nome')?.value || form.querySelector('#nombre')?.value || '';
+                    const firstName = form.querySelector('#nombre')?.value || '';
                     const email = form.querySelector('#email')?.value || '';
-                    const phone = form.querySelector('#telefone')?.value || form.querySelector('#telefono')?.value || '';
-                    const message = form.querySelector('#mensagem')?.value || form.querySelector('#mensaje')?.value || '';
+                    const phone = form.querySelector('#telefono')?.value || '';
+                    const message = form.querySelector('#mensaje')?.value || '';
                     
                     formData.set('first_name', firstName);
                     formData.set('email', email);
@@ -432,7 +435,7 @@
                             
                             if (result.ok) {
                                 // Mostrar mensaje de éxito (modo testing)
-                                showToast('{{ $lang === "es" ? "[MODO TESTING] Formulario validado correctamente. Los datos NO fueron enviados al servidor." : "[MODO TESTING] Formulário validado corretamente. Os dados NÃO foram enviados ao servidor." }}', 'success');
+                                showToast(@json($lang === "es" ? "[MODO TESTING] Formulario validado correctamente. Los datos NO fueron enviados al servidor." : "[MODO TESTING] Formulário validado corretamente. Os dados NÃO foram enviados ao servidor."), 'success');
                                 
                                 // Resetear formulario
                                 form.reset();
@@ -458,20 +461,20 @@
                                 }
                                 
                                 // Mostrar mensaje de éxito
-                                showToast('{{ $lang === "es" ? "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto." : "Mensagem enviada com sucesso. Entraremos em contato em breve." }}', 'success');
+                                showToast(@json($lang === "es" ? "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto." : "Mensagem enviada com sucesso. Entraremos em contato em breve."), 'success');
                                 
                                 // Resetear formulario
                                 form.reset();
                             } else {
-                                showToast('{{ $lang === "es" ? "Error al enviar el mensaje. Por favor, inténtalo de nuevo." : "Erro ao enviar mensagem. Por favor, tente novamente." }}', 'error');
+                                showToast(@json($lang === "es" ? "Error al enviar el mensaje. Por favor, inténtalo de nuevo." : "Erro ao enviar mensagem. Por favor, tente novamente."), 'error');
                             }
                         }
                     } catch (error) {
                         console.error('Error:', error);
                         if (isTestMode) {
-                            showToast('{{ $lang === "es" ? "[MODO TESTING] Error simulado para pruebas." : "[MODO TESTING] Erro simulado para testes." }}', 'error');
+                            showToast(@json($lang === "es" ? "[MODO TESTING] Error simulado para pruebas." : "[MODO TESTING] Erro simulado para testes."), 'error');
                         } else {
-                            showToast('{{ $lang === "es" ? "Error de conexión. Por favor, inténtalo de nuevo." : "Erro de conexão. Por favor, tente novamente." }}', 'error');
+                            showToast(@json($lang === "es" ? "Error de conexión. Por favor, inténtalo de nuevo." : "Erro de conexão. Por favor, tente novamente."), 'error');
                         }
                     } finally {
                         // Restaurar botón

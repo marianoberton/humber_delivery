@@ -12,12 +12,12 @@ return [
         'all' => env('LEAD_TO_ALL', 'comercial.internacional@humber.com.ar')
     ],
     
-    'notify_bcc' => env('LEAD_NOTIFY_BCC', 'leads@humber.com'),
+    'notify_bcc' => env('LEAD_NOTIFY_BCC', ''),
     
     'whatsapp' => [
-        'ar' => env('WHATSAPP_AR', '+54 9 11 2753-0009'),
-        'cl' => env('WHATSAPP_CL', '+56 9 5000 4666'),
-        'br' => env('WHATSAPP_BR', '+55 43 9865-0213'),
+        'ar' => env('WHATSAPP_AR', '5491127530009'),
+        'cl' => env('WHATSAPP_CL', '56950004666'),
+        'br' => env('WHATSAPP_BR', '554398650213'),
     ],
     
     'gtm_id' => env('GTM_ID', 'GTM-NP6GMN3C'),
