@@ -1,12 +1,12 @@
-# Humber Landing - Versión PHP
+# Landing Page Multiidioma - PHP
 
 ## 📋 Descripción
-Landing page dinámica para Humber Internacional con backend PHP y soporte multiidioma (Español y Portugués).
+Landing page dinámica con backend PHP y soporte multiidioma (Español y Portugués) para empresas internacionales.
 
 ## 🚀 Características
 - ✅ Backend PHP con sistema de rutas
 - ✅ Plantillas Blade para ES y PT
-- ✅ Configuración centralizada de números
+- ✅ Configuración centralizada
 - ✅ Formulario de contacto con procesamiento
 - ✅ Botón flotante de WhatsApp dinámico
 - ✅ Sistema de configuración flexible
@@ -14,16 +14,15 @@ Landing page dinámica para Humber Internacional con backend PHP y soporte multi
 
 ## 📁 Estructura del Proyecto
 ```
-humber-landing-php/
+landing-php/
 ├── index.php                    # Punto de entrada principal
 ├── web.php                      # Definición de rutas
-├── index.blade.php             # Plantilla principal
 ├── .env.example                # Ejemplo de configuración
 ├── app/
 │   └── Http/
 │       └── Controllers/        # Controladores PHP
 ├── config/
-│   └── leads.php              # Configuración de números
+│   └── leads.php              # Configuración
 ├── resources/
 │   └── views/
 │       └── landing/
@@ -52,8 +51,8 @@ humber-landing-php/
    php -S localhost:8000
    ```
 
-### Configuración de Números
-Edita `config/leads.php` para cambiar los números:
+### Configuración
+Edita `config/leads.php` para personalizar:
 ```php
 return [
     'whatsapp' => [
@@ -61,10 +60,12 @@ return [
         'cl' => '56987654321',      // Chile  
         'br' => '5511987654321',    // Brasil
     ],
-    'phone' => [
-        'ar' => '+54 9 11 2345-6789',
-        'cl' => '+56 9 8765-4321', 
-        'br' => '+55 11 9876-5432',
+    'from' => [
+        'email' => 'no-reply@tudominio.com',
+        'name' => 'Tu Empresa'
+    ],
+    'destinations' => [
+        'all' => 'contacto@tudominio.com'
     ]
 ];
 ```
@@ -77,21 +78,7 @@ return [
 - `/pt` - Página en portugués
 
 ### API/Formularios
-- `POST /contact` - Procesar formulario de contacto
-
-## 📞 Números de Contacto Configurados
-
-### Argentina
-- **Teléfono:** +54 9 11 2345-6789
-- **WhatsApp:** https://wa.me/5491127530009
-
-### Chile  
-- **Teléfono:** +56 9 8765-4321
-- **WhatsApp:** https://wa.me/56950004666
-
-### Brasil
-- **Teléfono:** +55 11 9876-5432
-- **WhatsApp:** https://wa.me/554398650213
+- `POST /lead` - Procesar formulario de contacto
 
 ## 🎨 Personalización
 
@@ -99,7 +86,7 @@ return [
 - **Español:** `resources/views/landing/es.blade.php`
 - **Portugués:** `resources/views/landing/pt.blade.php`
 
-### Cambiar Números
+### Cambiar Configuración
 - Edita `config/leads.php`
 - Los cambios se reflejan automáticamente
 
@@ -116,18 +103,16 @@ return [
 ## 📧 Configuración de Email
 Para el formulario de contacto, configura en `.env`:
 ```env
-MAIL_HOST=smtp.ejemplo.com
-MAIL_PORT=587
-MAIL_USERNAME=tu-email@ejemplo.com
-MAIL_PASSWORD=tu-password-seguro
-MAIL_FROM_ADDRESS=noreply@tudominio.com
-MAIL_FROM_NAME="Tu Empresa"
+LEAD_REST_URL=https://tu-api.com/service/send
+LEAD_FROM_EMAIL=no-reply@tudominio.com
+LEAD_FROM_NAME="Tu Empresa"
+LEAD_TO_ALL=contacto@tudominio.com
 ```
 
 ## 🔒 Seguridad
 - Variables de entorno para datos sensibles
 - Validación de formularios
-- Protección CSRF (si se implementa)
+- Protección contra spam (honeypot)
 
 ## 🚀 Despliegue en Producción
 
@@ -142,11 +127,12 @@ MAIL_FROM_NAME="Tu Empresa"
 3. Configura SSL/HTTPS
 4. Optimiza para producción
 
-## 📱 Funcionalidades Dinámicas
-- **Configuración centralizada:** Un solo lugar para cambiar números
+## 📱 Funcionalidades
+- **Configuración centralizada:** Un solo lugar para cambios
 - **Rutas amigables:** URLs limpias por idioma
 - **Plantillas reutilizables:** Sistema Blade eficiente
 - **Procesamiento de formularios:** Backend robusto
+- **Integración REST:** Envío de emails via API
 
 ## 🛠️ Tecnologías Utilizadas
 - PHP 7.4+
@@ -157,9 +143,9 @@ MAIL_FROM_NAME="Tu Empresa"
 - JavaScript vanilla
 
 ## 📧 Soporte
-Para modificaciones o soporte técnico, contacta al desarrollador.
+Para modificaciones o soporte técnico, contacta al desarrollador del proyecto.
 
-## 🔄 Actualizaciones
+## 🔄 Mantenimiento
 - Mantén respaldos antes de actualizar
 - Revisa compatibilidad de PHP
-- Actualiza dependencias si es necesario
+- Actualiza configuraciones según necesidades

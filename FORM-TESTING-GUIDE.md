@@ -5,10 +5,10 @@
 El formulario de contacto está completamente configurado para enviar emails a través del endpoint REST de Humber. La implementación incluye:
 
 ### Configuración del Endpoint
-- **URL**: `https://notifications.humberapp.com.ar/service/send`
+- **URL**: `https://notifications.tudominio.com/service/send`
 - **Método**: POST
-- **Email origen**: `no-reply@humber.com.ar`
-- **Email destino**: `Comercial.Internacional@humber.com.ar`
+- **Email origen**: `no-reply@tudominio.com`
+- **Email destino**: `contacto@tudominio.com`
 
 ### Campos del Formulario
 - **Nombre** (`nombre`): Campo obligatorio
@@ -61,8 +61,8 @@ const isTestMode = false; // Cambiar a false para enviar emails reales
 ```
 
 En este modo:
-- Se envían datos reales al endpoint de Humber
-- Se generan emails reales a `comercial.internacional@humber.com.ar`
+- Se envían datos reales al endpoint configurado
+- Se generan emails reales a `contacto@tudominio.com`
 - Se muestran mensajes de éxito/error reales
 
 ### 3. Script de Prueba Independiente
@@ -82,18 +82,18 @@ Este script:
 Asegúrate de configurar estas variables en tu archivo `.env`:
 
 ```env
-# Endpoint REST de Humber
-LEAD_REST_URL=https://notifications.humberapp.com.ar/service/send
+# Endpoint REST
+LEAD_REST_URL=https://notifications.tudominio.com/service/send
 
 # Configuración de emails
-LEAD_FROM_EMAIL=no-reply@humber.com.ar
-LEAD_FROM_NAME="Humber Landing"
-LEAD_TO_ALL=Comercial.Internacional@humber.com.ar
+LEAD_FROM_EMAIL=no-reply@tudominio.com
+LEAD_FROM_NAME="Tu Empresa"
+LEAD_TO_ALL=contacto@tudominio.com
 LEAD_NOTIFY_BCC=
 
 # WhatsApp (opcional)
 LEAD_WHATSAPP_AR=
-LEAD_WHATSAPP_BR=
+```LEAD_WHATSAPP_BR=
 
 # Google Tag Manager (opcional)
 GTM_ID=

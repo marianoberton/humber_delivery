@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Esta guía proporciona instrucciones detalladas para integrar la página de destino de Humber International en una aplicación Laravel nueva o existente. Está dirigida a desarrolladores con un conocimiento práctico del framework Laravel.
+Esta guía proporciona instrucciones detalladas para integrar esta landing page multiidioma en una aplicación Laravel nueva o existente. Está dirigida a desarrolladores con un conocimiento práctico del framework Laravel.
 
 ## Tabla de Contenido
 
@@ -53,20 +53,20 @@ cp ruta/a/humber-landing-php/config/leads.php config/leads.php
 Añada las siguientes variables a su archivo `.env`. Son esenciales para la funcionalidad de la página de destino.
 
 ```env
-# Configuración de la Página de Destino de Humber
-LEAD_REST_URL=https://notifications.humberapp.com.ar/service/send
-LEAD_FROM_EMAIL=no-reply@humber.com.ar
-LEAD_FROM_NAME="Humber International"
-LEAD_TO_ALL=comercial.internacional@humber.com.ar
-LEAD_NOTIFY_BCC=leads@humber.com
+# Configuración de la Landing Page
+LEAD_REST_URL=https://notifications.tudominio.com/service/send
+LEAD_FROM_EMAIL=no-reply@tudominio.com
+LEAD_FROM_NAME="Tu Empresa"
+LEAD_TO_ALL=contacto@tudominio.com
+LEAD_NOTIFY_BCC=
 
 # Información de Contacto Regional
-WHATSAPP_AR="+54 9 11 2753-0009"
-WHATSAPP_CL="+56 9 5000 4666"
-WHATSAPP_BR="+55 43 9865-0213"
+WHATSAPP_AR="+54 9 11 1234-5678"
+WHATSAPP_CL="+56 9 1234 5678"
+WHATSAPP_BR="+55 11 91234-5678"
 
 # Analítica
-GTM_ID=GTM-NP6GMN3C
+GTM_ID=GTM-XXXXXXX
 ```
 
 ### 4. Copiar Activos Públicos
@@ -113,15 +113,15 @@ class LandingPageController extends Controller
         $specific = [
             'es' => [
                 'lang' => 'es',
-                'title' => 'HUMBER - Transporte Internacional | Logística Argentina, Brasil, Chile',
-                'description' => 'Líder en transporte de carga y logística internacional en Chile. Conectamos Argentina, Chile y Brasil con servicios especializados.',
+                'title' => 'Landing Page - Transporte Internacional | Logística',
+                'description' => 'Servicios de transporte de carga y logística internacional especializada.',
                 'canonical' => url('/'),
                 'alternate' => url('/br'),
             ],
             'pt' => [
                 'lang' => 'pt',
-                'title' => 'HUMBER - Transporte Internacional | Logística Argentina, Brasil, Chile',
-                'description' => 'Líder em transporte de carga e logística internacional no Chile. Conectamos Argentina, Chile e Brasil com serviços especializados.',
+                'title' => 'Landing Page - Transporte Internacional | Logística',
+                'description' => 'Serviços de transporte de carga e logística internacional especializada.',
                 'canonical' => url('/br'),
                 'alternate' => url('/'),
             ],
@@ -198,4 +198,4 @@ Siga los procedimientos estándar de despliegue de Laravel:
 
 ## Soporte
 
-Para consultas técnicas o para informar de problemas, por favor, abra una *incidencia* en el repositorio de GitHub del proyecto o contacte al equipo de desarrollo en `dev-team@humber.com.ar`.
+Para consultas técnicas o para informar de problemas, consulte la documentación del proyecto o revise los logs de error de Laravel para obtener más información sobre posibles problemas de configuración.

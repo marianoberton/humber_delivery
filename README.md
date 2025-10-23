@@ -1,12 +1,8 @@
-# Humber International - Página de Destino Oficial
+# Landing Page Multiidioma - PHP y HTML Estático
 
-![Humber International](https://www.humber.com.ar/images/logo-humber.png)
+## Descripción
 
-## Sobre Humber
-
-Humber es una empresa de logística líder impulsada por la tecnología, con más de una década de experiencia conectando negocios en toda América Latina. Nos especializamos en proporcionar soluciones de transporte innovadoras y confiables, actuando como un "Uber de la carga" para una nueva generación de comercio.
-
-Este repositorio contiene el código fuente oficial de la página de destino de Humber International, diseñada para una integración perfecta y un alto rendimiento.
+Este repositorio contiene una landing page multiidioma (español y portugués) con dos implementaciones: una versión PHP dinámica y una versión HTML estática. Está diseñada para empresas de logística y transporte que necesitan una presencia web profesional en múltiples mercados latinoamericanos.
 
 ## Tabla de Contenido
 
@@ -21,7 +17,7 @@ Este repositorio contiene el código fuente oficial de la página de destino de 
 
 ## Descripción del Proyecto
 
-Este repositorio proporciona dos implementaciones optimizadas de la página de destino de Humber International:
+Este repositorio proporciona dos implementaciones optimizadas de una landing page para empresas de logística:
 
 1.  **Versión HTML Estática:** Para un rendimiento y simplicidad máximos.
 2.  **Versión PHP:** Para capacidades dinámicas y fácil integración con proyectos basados en PHP.
@@ -76,8 +72,8 @@ Una implementación flexible y potente para entornos de servidor dinámicos.
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone https://github.com/your-username/humber-landing.git
-    cd humber-landing
+    git clone https://github.com/tu-usuario/landing-page-multiidioma.git
+    cd landing-page-multiidioma
     ```
 
 2.  **Elija su implementación:**
@@ -119,7 +115,7 @@ Una implementación flexible y potente para entornos de servidor dinámicos.
 La versión PHP se configura a través del archivo `.env`. Las variables clave incluyen:
 
 - `APP_URL`: La URL base de su aplicación.
-- `LEAD_REST_URL`: El endpoint para el envío de leads.
+- `LEAD_REST_URL`: El endpoint para el envío de formularios de contacto.
 - `WHATSAPP_AR`, `WHATSAPP_CL`, `WHATSAPP_BR`: Números de WhatsApp para cada región.
 - `GTM_ID`: Su ID de Google Tag Manager.
 
@@ -132,22 +128,11 @@ Toda la configuración se maneja directamente dentro de los archivos HTML (`inde
 - **Soporte Multilenguaje:** Localizaciones en español y portugués.
 - **Preparado para Múltiples Regiones:** Configurado para Argentina, Chile y Brasil.
 - **Diseño Responsivo:** Optimizado para dispositivos de escritorio, tabletas y móviles.
-- **Formulario de Contacto Funcional:** Captura de leads con procesamiento en el backend (versión PHP).
+- **Formulario de Contacto Funcional:** Captura de información de contacto con procesamiento en el backend (versión PHP).
 - **WhatsApp Integrado:** Botón flotante con números específicos por país.
 - **Optimizado para SEO:** HTML semántico, metaetiquetas y mejores prácticas.
-
-## Soporte y Contribución
-
-Este proyecto es mantenido por el equipo de desarrollo de Humber.
-
-- **Informes de Errores:** Por favor, abra una *incidencia* en GitHub con una descripción detallada del problema.
-- **Solicitudes de Características:** Para nuevas características o mejoras, por favor, abra una *incidencia* para iniciar una discusión.
-- **Contribuciones:** Agradecemos las contribuciones. Por favor, envíe una *pull request* con una descripción clara de sus cambios.
-
 
 
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Vea el archivo [LICENSE](LICENSE) para más detalles.
-
-Copyright (c) 2025 Humber International.

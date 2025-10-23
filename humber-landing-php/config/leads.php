@@ -1,24 +1,24 @@
 <?php
 
 return [
-    'rest_url' => env('LEAD_REST_URL', 'https://notifications.humberapp.com.ar/service/send'),
+    'rest_url' => env('LEAD_REST_URL', 'https://notifications.tudominio.com/service/send'),
     
     'from' => [
-        'email' => env('LEAD_FROM_EMAIL', 'no-reply@humber.com.ar'),
-        'name' => env('LEAD_FROM_NAME', 'Humber Internacional')
+        'email' => env('LEAD_FROM_EMAIL', 'no-reply@tudominio.com'),
+        'name' => env('LEAD_FROM_NAME', 'Tu Empresa')
     ],
     
-    'destinations' => [
-        'all' => env('LEAD_TO_ALL', 'comercial.internacional@humber.com.ar')
+    'to' => [
+        'all' => env('LEAD_TO_ALL', 'contacto@tudominio.com')
     ],
     
     'notify_bcc' => env('LEAD_NOTIFY_BCC', ''),
     
     'whatsapp' => [
-        'ar' => env('WHATSAPP_AR', '5491127530009'),
-        'cl' => env('WHATSAPP_CL', '56950004666'),
-        'br' => env('WHATSAPP_BR', '554398650213'),
+        'ar' => env('WHATSAPP_AR', '5491112345678'),
+        'cl' => env('WHATSAPP_CL', '56912345678'),
+        'br' => env('WHATSAPP_BR', '5511912345678'),
     ],
     
-    'gtm_id' => env('GTM_ID', 'GTM-NP6GMN3C'),
+    'gtm_id' => env('GTM_ID', 'GTM-XXXXXXX'),
 ];

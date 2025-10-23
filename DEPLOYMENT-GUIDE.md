@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Esta guía detalla las mejores prácticas y procedimientos para desplegar la landing page de Humber International. Cubre dos enfoques de implementación: una versión PHP dinámica y una versión HTML estática, permitiéndole elegir la que mejor se adapte a su infraestructura y necesidades.
+Esta guía detalla las mejores prácticas y procedimientos para desplegar esta landing page multiidioma. Cubre dos enfoques de implementación: una versión PHP dinámica y una versión HTML estática, permitiéndole elegir la que mejor se adapte a su infraestructura y necesidades.
 
 ## Tabla de Contenido
 
@@ -34,7 +34,7 @@ Este enfoque ofrece la máxima flexibilidad y es ideal para entornos de servidor
 1.  **Transferir Archivos:** Copie el contenido del directorio `humber-landing-php/` al directorio raíz de su servidor (ej. `/var/www/html`).
 2.  **Configurar Variables de Entorno:**
     -   Renombre el archivo `.env.example` a `.env`.
-    -   Edite el archivo `.env` para configurar los parámetros de la aplicación, como las credenciales de la API de leads y los números de contacto regionales.
+    -   Edite el archivo `.env` para configurar los parámetros de la aplicación, como las credenciales de la API de notificaciones y los números de contacto regionales.
 3.  **Configurar el Servidor Web:**
     -   Asegúrese de que su servidor web redirija todas las solicitudes al archivo `index.php`. Consulte la sección [Configuración del Servidor Web](#configuración-del-servidor-web) para ver ejemplos.
 4.  **Establecer Permisos:**
@@ -110,4 +110,4 @@ php -S localhost:8001
 
 ## Soporte
 
-Si encuentra problemas técnicos, por favor, abra una *incidencia* en el repositorio de GitHub del proyecto o contacte al equipo de desarrollo en `dev-team@humber.com.ar`.
+Si encuentra problemas técnicos durante el despliegue, consulte la documentación del proyecto o revise los logs de error de su servidor web para obtener más información sobre posibles problemas de configuración.

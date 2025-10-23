@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Este documento proporciona instrucciones completas para desplegar la página de destino de Humber International en un entorno PHP estándar. Está diseñado para desarrolladores familiarizados con PHP y configuraciones comunes de servidores web (Apache/Nginx).
+Este documento proporciona instrucciones completas para desplegar esta landing page multiidioma en un entorno PHP estándar. Está diseñado para desarrolladores familiarizados con PHP y configuraciones comunes de servidores web (Apache/Nginx).
 
 ## Tabla de Contenido
 
@@ -32,20 +32,20 @@ Este es el método más sencillo para desplegar la página de destino.
 2.  **Configurar Entorno:** Renombre `.env.example` a `.env` y personalice las variables:
 
     ```env
-    # Configuración de la Página de Destino de Humber
-    LEAD_REST_URL=https://notifications.humberapp.com.ar/service/send
-    LEAD_FROM_EMAIL=no-reply@humber.com.ar
-    LEAD_FROM_NAME="Humber International"
-    LEAD_TO_ALL=comercial.internacional@humber.com.ar
-    LEAD_NOTIFY_BCC=leads@humber.com
+    # Configuración de la Landing Page
+    LEAD_REST_URL=https://notifications.tudominio.com/service/send
+    LEAD_FROM_EMAIL=no-reply@tudominio.com
+    LEAD_FROM_NAME="Tu Empresa"
+    LEAD_TO_ALL=contacto@tudominio.com
+    LEAD_NOTIFY_BCC=
 
     # Información de Contacto Regional
-    WHATSAPP_AR="+54 9 11 2753-0009"
-    WHATSAPP_CL="+56 9 5000 4666"
-    WHATSAPP_BR="+55 43 9865-0213"
+    WHATSAPP_AR="+54 9 11 1234-5678"
+    WHATSAPP_CL="+56 9 1234 5678"
+    WHATSAPP_BR="+55 11 91234-5678"
 
     # Analítica
-    GTM_ID=GTM-NP6GMN3C
+    GTM_ID=GTM-XXXXXXX
     ```
 
 3.  **Configurar Servidor Web:** Configure reglas de reescritura para dirigir todas las solicitudes a `index.php`. Consulte la sección de [Configuración del Servidor](#configuración-del-servidor) para ver ejemplos.
@@ -134,4 +134,4 @@ location ~ \.php$ {
 
 ## Soporte
 
-Para consultas técnicas o para informar de problemas, por favor, abra una *incidencia* en el repositorio de GitHub del proyecto o contacte al equipo de desarrollo en `dev-team@humber.com.ar`.
+Para consultas técnicas o para informar de problemas, consulte la documentación del proyecto o revise los logs de error de su servidor web para obtener más información sobre posibles problemas de configuración.
